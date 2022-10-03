@@ -14,5 +14,18 @@ function saveToLocalStorage(event) {
     email,
     phone,
   };
+  // for storing multiple data at local storage don't use hardcoded key
+  // use unique key like obj.email everbody has different email or phone number
+  //use these
   localStorage.setItem(obj.email, JSON.stringify(obj));
+
+  // get details of user and show them on screen
+  showNewUserOnScreen(obj);
+}
+
+function showNewUserOnScreen(user) {
+  const parentNode = document.getElementById("listOfUsers");
+  const childHTML = `<li> ${user.name} -${user.email}</li>`;
+
+  parentNode.innerHTML = parentNode.innerHTML + childHTML;
 }
