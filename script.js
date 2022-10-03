@@ -10,9 +10,9 @@ function saveToLocalStorage(event) {
 
   //
   const obj = {
-    name: name,
-    email: email,
-    phone: phone,
+    name,
+    email,
+    phone,
   };
-  localStorage.setItem("userDetails", JSON.stringify(obj));
+  localStorage.setItem(obj.email, JSON.stringify(obj));
 }
