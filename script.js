@@ -24,8 +24,33 @@ function saveToLocalStorage(event) {
 }
 
 function showNewUserOnScreen(user) {
+  if (localStorage.getItem(user.email) !== null) {
+    removeUserFromScreen(user.email);
+  }
+
   const parentNode = document.getElementById("listOfUsers");
   const childHTML = `<li> ${user.name} -${user.email}</li>`;
 
   parentNode.innerHTML = parentNode.innerHTML + childHTML;
+}
+
+// when u are creating a new user
+// simply check if the mail id exist in local storage or not
+// if it exists delete him from the screen
+// then create a new user
+
+// deleteUser ('abc@gmail.com')
+
+function deleteUser(emailId) {
+  console.log(emailId);
+  localStorage.removeItem(emailId);
+  removeUserFromScreen(emailId);
+}
+
+function removeUserFromScreen(emailId) {
+  const parentNode = document.getElementById("listOfUsers");
+  const childNodeToBeDeleted = document.getElementById("emaiId");
+  if (childNodeToBeDeleted) {
+    parentNode.removeChild(childNodeToBeDeleted);
+  }
 }
